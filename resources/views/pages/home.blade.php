@@ -5,7 +5,9 @@
     <div id="test">
         <ul>
             @foreach ($saints as $saint)
-                <li>{{ $saint -> nome }} - {{ $saint -> numeroMiracoli }}</li>
+                <a href="/saint/{{ $saint -> id }}">
+                    <li>[{{$saint -> id}}] {{ $saint -> nome }} - {{ $saint -> numeroMiracoli }}</li>
+                </a>
             @endforeach
         </ul>
     </div>
