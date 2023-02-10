@@ -10,7 +10,7 @@ class MainController extends Controller
 {
     public function home() {
 
-        $saints = Saint::all();
+        $saints = Saint::orderBy('created_at', 'DESC') -> get();
 
         $data = [
             'saints' => $saints
@@ -34,6 +34,27 @@ class MainController extends Controller
 
         $saint = Saint::find($id);
         $saint -> delete();
+
+        return redirect() -> route('home');
+    }
+
+    public function saintCreate() {
+
+        return view('pages.saintCreate');
+    }
+
+    public function saintStore(Request $request) {
+
+        $data = $request -> all();
+
+        $saint = new Saint();
+
+        $saint -> nome = $data['nome'];
+        $saint -> luogoNascita = $data['luogoNascita'];
+        $saint -> dataBenedizione = $data['dataBenedizione'];
+        $saint -> numeroMiracoli = $data['numeroMiracoli'];
+
+        $saint -> save();
 
         return redirect() -> route('home');
     }

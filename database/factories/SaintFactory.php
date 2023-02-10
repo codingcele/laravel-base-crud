@@ -19,7 +19,7 @@ class SaintFactory extends Factory
         return [
             'nome' => fake() -> firstName(),
             'luogoNascita' => fake() -> city(),
-            'dataBenedizione' => fake() -> dateTime(),
+            'dataBenedizione' => fake() -> date('Y_m_d'),
             "numeroMiracoli" => fake() -> numberBetween(1,1000),
         ];
     }
