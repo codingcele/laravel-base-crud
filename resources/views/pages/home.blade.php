@@ -2,14 +2,17 @@
 
 @section('content')
     <h1>Santi</h1>
-    <div id="test">
+    <a href="#">CREATE NEW SAINT</a>
         <ul>
             @foreach ($saints as $saint)
-                <a href="/saint/{{ $saint -> id }}">
-                    <li>[{{$saint -> id}}] {{ $saint -> nome }} - {{ $saint -> numeroMiracoli }}</li>
-                </a>
+                <li>
+                    <a href="{{ route('saint.show', ['id' => $saint -> id]) }}">
+                        [{{$saint -> id}}] {{ $saint -> nome }} - {{ $saint -> numeroMiracoli }}
+                    </a>
+                    ---
+                    <a href="{{ route('saint.destroy', ['id' => $saint -> id]) }}">X</a>
+                </li>
             @endforeach
         </ul>
-    </div>
 @endsection
 
