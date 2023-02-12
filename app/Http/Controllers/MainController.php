@@ -19,14 +19,12 @@ class MainController extends Controller
         return view('pages.home', $data);
     }
 
-    public function show($id) {
-
-        $saint = Saint::find($id);
+    public function show(Saint $saint) {
 
         $data = [
             'saint' => $saint
         ];
-        
+
         return view('pages.saint', $data);
     }
 
@@ -57,5 +55,29 @@ class MainController extends Controller
         $saint -> save();
 
         return redirect() -> route('home');
+    }
+
+    public function saintEdit(Saint $saint) {
+
+        $data = [
+            'saint' => $saint
+        ];
+
+        return view('pages.saintEdit', $data);
+    }
+
+    public function saintUpdate(Request $request, Saint $saint) {
+
+        $data = $request -> all();
+
+        $saint -> nome = $data['nome'];
+        $saint -> luogoNascita = $data['luogoNascita'];
+        $saint -> dataBenedizione = $data['dataBenedizione'];
+        $saint -> numeroMiracoli = $data['numeroMiracoli'];
+
+        $saint -> save();
+
+        return redirect() -> route('saint.show', $saint);
+
     }
 }

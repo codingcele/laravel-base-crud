@@ -16,13 +16,19 @@ use App\Http\Controllers\MainController;
 |
 */
 
-
+// INDEX
 Route::get('/', [MainController::class, 'home']) -> name('home');
 
-Route::get('/saint/show/{id}', [MainController::class, 'show']) -> name('saint.show'); 
+// SHOW
+Route::get('/saint/show/{saint}', [MainController::class, 'show']) -> name('saint.show'); 
 
+// DELETE
 Route::get('/saint/destroy/{id}', [MainController::class, 'saintDestroy']) -> name('saint.destroy');
 
+// CREATE
 Route::get('/saint/create', [MainController::class, 'saintCreate']) -> name('saint.create');
-
 Route::post('/saint/store', [MainController::class, 'saintStore']) -> name('saint.store');
+
+// UPDATE
+Route::get('/saint/edit/{saint}', [MainController::class, 'saintEdit']) -> name('saint.edit');
+Route::post('/saint/update/{saint}', [MainController::class, 'saintUpdate']) -> name('saint.update');

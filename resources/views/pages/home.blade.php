@@ -6,9 +6,11 @@
         <ul>
             @foreach ($saints as $saint)
                 <li>
-                    <a href="{{ route('saint.show', ['id' => $saint -> id]) }}">
+                    <a href="{{ route('saint.show', $saint) }}">
                         [{{$saint -> id}}] - {{ $saint -> nome }} - {{ $saint -> luogoNascita }} - {{ $saint -> dataBenedizione }} - {{ $saint -> numeroMiracoli}}
                     </a>
+                    ---
+                    <a href="{{ route('saint.edit', $saint) }}">Edit</a>
                     ---
                     <a href="{{ route('saint.destroy', ['id' => $saint -> id]) }}">X</a>
                 </li>

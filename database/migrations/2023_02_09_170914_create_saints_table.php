@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 32);
             $table->string('luogoNascita', 32);
-            $table->dateTime('dataBenedizione');
+            $table->date('dataBenedizione');
             $table->integer("numeroMiracoli") -> unsigned();
 
             $table->timestamps();
